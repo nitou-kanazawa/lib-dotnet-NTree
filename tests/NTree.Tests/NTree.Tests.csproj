@@ -7,6 +7,7 @@
     
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <RootNamespace>NTree.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MyLib\MyLib.csproj" />
+    <ProjectReference Include="..\..\src\NTree\NTree.csproj" />
   </ItemGroup>
 
 </Project>
