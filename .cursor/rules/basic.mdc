@@ -1,0 +1,36 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Unity Compatible .NET Library - Base Rules
+
+## プロジェクト概要
+- Unity Engine非依存の汎用.NETライブラリ
+- Unity 2022.3 LTS以降で使用可能
+- .NET Standard 2.1をターゲット
+- 外部依存なしでの実装を基本とする
+
+## 必須要件
+- TargetFramework: netstandard2.1
+- Nullable reference types有効
+- TreatWarningsAsErrors: true
+- GenerateDocumentationFile: true
+
+### 禁止事項
+- **NuGetパッケージ依存**: 基本的に外部依存なし
+- **Unity Engine依存**: UnityEngine名前空間の使用禁止
+- **AOTコンパイル非対応**: リフレクション・動的コード生成の制限使用
+- **unsafe コード**: 使用禁止
+- **Thread.Sleep**: Unity互換性のため使用禁止
+
+### 推奨事項
+- **純粋なC#実装**: .NET Standard APIのみ使用
+- **構造体活用**: 参照型よりも値型を優先
+- **IDisposable実装**: リソース管理の明示的実装
+- **readonly修飾子**: 変更不可能な構造体・フィールドに適用
+
+
+
+
+

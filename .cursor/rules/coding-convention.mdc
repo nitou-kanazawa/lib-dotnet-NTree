@@ -1,0 +1,96 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## コーディング規約
+
+### 命名規則
+- **クラス名**: PascalCase (DataProcessor, EventManager)
+- **メソッド名**: PascalCase (ProcessData, HandleEvent)
+- **プロパティ名**: PascalCase (IsEnabled, MaxValue)
+- **フィールド名**: _camelCase (private), PascalCase (public)
+- **定数**: UPPER_CASE (MAX_CAPACITY, DEFAULT_SIZE)
+- **インターフェース**: I + PascalCase (IDataProcessor, IEventHandler)
+
+### ファイル構成
+- 1型 = 1ファイル
+- ファイル名 = 型名.cs
+- 名前空間: ProjectName.FeatureName
+
+## 必須パターン
+
+### XMLドキュメントコメント
+```cs
+/// <summary>
+/// データを処理するためのプロセッサ
+/// </summary>
+/// <param name="data">処理対象のデータ</param>
+/// <returns>処理結果</returns>
+public ProcessResult ProcessData(byte[] data)
+```
+
+### 構造体定義
+```cs
+/// <summary>
+/// 処理結果を表す構造体
+/// </summary>
+[System.Serializable]
+public readonly struct ProcessResult {
+    public readonly bool IsSuccess;
+    public readonly string ErrorMessage;
+    
+    public ProcessResult(bool isSuccess, string errorMessage = null) {
+        IsSuccess = isSuccess;
+        ErrorMessage = errorMessage;
+    }
+}
+
+``` 
+
+### エラーハンドリング
+```cs
+// Guard clauses必須
+public void ProcessData(byte[] data) {
+    if (data == null)
+        throw new ArgumentNullException(nameof(data));
+    
+    if (data.Length == 0)
+        throw new ArgumentException("Data cannot be empty", nameof(data));
+    
+    // メイン処理
+}
+
+```
+
+### リソース管理
+```cs
+public class DataProcessor : IDisposable {
+    private bool _disposed = false;
+    
+    public void Dispose() {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+    
+    protected virtual void Dispose(bool disposing) {
+        if (!_disposed && disposing)
+        {
+            // リソース解放
+        }
+        _disposed = true;
+    }
+}
+```
+
+### AOT
+```cs
+// 許容される例
+var type = typeof(MyClass);
+var type2 = obj.GetType();
+
+// 禁止される例
+// var instance = Activator.CreateInstance(type);
+// var method = type.GetMethod("MethodName");
+// method.Invoke(obj, null);
+```
