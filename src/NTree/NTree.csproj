@@ -3,6 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
+
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+
     <AssemblyName>NTree</AssemblyName>
     <RootNamespace>NTree</RootNamespace>
   </PropertyGroup>
