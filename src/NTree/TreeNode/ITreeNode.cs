@@ -2,6 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace NTree {
+
+    /// <summary>
+    /// A node in a tree.
+    /// </summary>
+    /// <typeparam name="TNode">The type of the node.</typeparam>
     public interface ITreeNode<TNode>
         where TNode : ITreeNode<TNode> {
 

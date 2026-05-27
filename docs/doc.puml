@@ -1,0 +1,38 @@
+@startuml
+
+
+package Core {
+  
+  class TreeNode {
+    + Parent : TreeNode
+    + Children : IList<TreeNode>
+    ---
+    + Add()
+    + Incert()
+    + Remove()
+    + Clear()
+  }
+    
+  class Tree {
+    + Root
+  }
+  
+  Tree *-l- TreeNode
+}
+
+
+package UGui {
+  
+  class UiTree {}
+  UiTree --u|> Tree
+}
+
+
+package UiToolkit {
+  class UiTree {}  
+  UiTree --u|> Tree
+}
+
+
+
+@enduml

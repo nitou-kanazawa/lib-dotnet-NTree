@@ -1,11 +1,17 @@
 using System.Collections.Generic;
 
 namespace NTree {
+
+    /// <summary>
+    /// A mutable node in a tree.
+    /// </summary>
+    /// <typeparam name="TNode">The type of the node.</typeparam>
     public interface IMutableTreeNode<TNode> : ITreeNode<TNode>
         where TNode : IMutableTreeNode<TNode> {
-        void AddChild(TNode child);
-        void InsertChild(int index, TNode child);
-        void RemoveChild(TNode child);
+
+        TNode AddChild(TNode child);
+        TNode InsertChild(int index, TNode child);
+        TNode RemoveChild(TNode child);
         IEnumerable<TNode> ClearChildren();
     }
 }

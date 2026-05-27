@@ -1,0 +1,50 @@
+@startuml
+
+package Core {
+  
+  package TreeNode {    
+    ' -------------------------
+    ' インタフェース
+    interface ITreeNode {
+      + Parent {get}
+      + Children {get}
+    }
+    interface IMutableTreeNode {
+      + AddChild()
+      + InsertChild()
+      + RemoveChild()
+      + ClearChildren()
+    }
+    IMutableTreeNode .u.|> ITreeNode
+    
+    ' -------------------------
+    ' 実装
+    abstract TreeNodeBase {         }
+    abstract GeneralTreeNode {     }   
+    
+    TreeNodeBase .l.|> ITreeNode
+    GeneralTreeNode -u-|> TreeNodeBase
+    GeneralTreeNode .l.|> IMutableTreeNode
+  }
+  
+}
+
+package UGui {
+  
+  class BlockNode {
+    
+  }
+  
+  BlockNode -u--|> GeneralTreeNode
+}
+
+
+package UiToolkit {
+  class BlockNode {
+    
+  }
+  BlockNode -u--|> GeneralTreeNode
+}
+
+
+@enduml
